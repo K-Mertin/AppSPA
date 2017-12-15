@@ -21,6 +21,10 @@ export class UserService {
         .catch(this.handlerError);
     }
 
+
+    updateUser(id: number, user: User) {
+        return this.authHttp.put(this.baseUrl + 'users/' + id, user).catch(this.handlerError);
+    }
     // private jwt() {
     //     let token = localStorage.getItem('token');
     //     if (token) {
