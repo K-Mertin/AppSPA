@@ -16,9 +16,9 @@ export class UserService {
 
     getUsers(): Observable<User[]> {
         return this.authHttp
-        .get(this.baseUrl + 'users')
-        .map(response => <User[]>response.json())
-        .catch(this.handlerError);
+            .get(this.baseUrl + 'users')
+            .map(response => <User[]>response.json())
+            .catch(this.handlerError);
     }
 
 
@@ -33,6 +33,14 @@ export class UserService {
     //         return new RequestOptions({ headers: headers });
     //     }
     // }
+
+    setMainPhoto(userId: number, id: number) {
+        return this.authHttp.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {}).catch(this.handlerError);
+    }
+
+    deletePhoto(userId: number, id: number) {
+        return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + id ).catch(this.handlerError);
+    }
 
     getUser(id): Observable<User> {
         return this.authHttp
@@ -60,4 +68,6 @@ export class UserService {
             modelStateErrors || 'Server error'
         );
     }
+
+
 }
