@@ -9,12 +9,14 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MemberListResolver implements Resolve<User[]> {
+    pageSize = 5;
+    PageNumber = 1;
 
     constructor(private userService: UserService, private router: Router
         , private alertify: AlertifyService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
-        return this.userService.getUsers().catch(error => {
+        return this.userService.getUsers(this.PageNumber, this.pageSize).catch(error => {
             this.alertify.error('problem retrieving data');
             this.router.navigate(['/members']);
             return Observable.of(null);
