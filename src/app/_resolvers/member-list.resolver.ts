@@ -20,7 +20,7 @@ export class MemberListResolver implements Resolve<User[]> {
             this.alertify.error('problem retrieving data');
             this.router.navigate(['/members']);
             return Observable.of(null);
-        })
+        });
     }
 
 }

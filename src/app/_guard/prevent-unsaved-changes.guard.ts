@@ -7,7 +7,7 @@ export class PreventUnsavedChanges implements CanDeactivate<MemberEditComponent>
 
     canDeactivate(component: MemberEditComponent) {
         if (component.editForm.dirty) {
-            return confirm('are you sure to continue? any unsaved changes will be lost.')
+            return confirm('are you sure to continue? any unsaved changes will be lost.');
         }
         return true;
     }
